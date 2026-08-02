@@ -1,0 +1,258 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>10Store</title>
+    <link id="winjs-theme" href="" rel="stylesheet" />
+    <script src="lib/winjs-4.0.1/js/base.js"></script>
+    <script src="lib/winjs-4.0.1/js/ui.js"></script>
+    <link href="css/default.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        :root {
+            --accent: #0078d7;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #body-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            filter: blur(125px);
+            opacity: 0.3;
+            transform: scale(1.05); 
+            pointer-events: none;
+        }
+
+        .win-button:focus::after,
+        .icon-btn:focus::after {
+            content: none !important;
+        }
+
+        #root-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        header#app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+            padding: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #page-title {
+            display: block;
+            margin-left: 12px;
+            margin-right: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .navbtn {
+            background: transparent !important;
+            border: none !important;
+            font-size: 14px;
+            height: 48px;
+            padding: 0 12px !important;
+            min-width: 0 !important;
+        }
+
+            .navbtn:hover .win-label {
+                color: var(--accent) !important;
+                color: #0078d7
+            }
+
+        .icon-btn {
+            background: transparent !important;
+            min-width: 0 !important;
+            min-height: 0 !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: none;
+        }
+
+        .searchToggle {
+            background: transparent !important;
+            min-width: 0 !important;
+            min-height: 0 !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: none;
+        }
+
+        #search {
+            width: 100%;
+            max-width: 220px;
+            min-width: 0 !important;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background-color: transparent;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 800px) {
+            .icon-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .searchToggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                  .searchToggle.hide {
+                      display: none !important;
+                  }
+
+            .navbtn {
+                display: none;
+            }
+
+            #body-bg {
+                display: none;
+            }
+
+            header#app-header {
+                padding: unset;
+            }
+
+                header#app-header.search-open {
+                    padding: 0 12px 0 0 !important;
+                }
+
+            #search {
+                display: none;
+            }
+
+                    #search.show {
+                        display: block !important;
+                    }
+            }
+
+        @media (max-width: 350px) {
+            #page-title {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="win-type-body">
+    <img id="body-bg" src="gradient.gif" aria-hidden="true">
+
+    <div id="root-container">
+        <header id="app-header">
+            <div class="header-left">
+                <button class="win-button icon-btn">&#xE700;</button>
+
+                <span id="page-title" class="win-type-title">10Store</span>
+
+                <nav id="nav-links">
+                    <button id="btn-home" class="win-button navbtn">
+                        <span class="win-label">Home</span>
+                    </button>
+
+                    <button id="btn-apps" class="win-button navbtn">
+                        <span class="win-label">Apps</span>
+                    </button>
+
+                    <button id="btn-cache" class="win-button navbtn">
+                        <span class="win-label">Downloads</span>
+                    </button>
+
+                    <button id="btn-upload" class="win-button navbtn">
+                        <span class="win-label">Upload</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div id="nav-menu" data-win-control="WinJS.UI.Menu">
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-home', label:'Home', icon:'home'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-apps', label:'Apps', icon:'allapps'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-cache', label:'Downloads', icon:'download'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-upload', label:'Upload', icon:'upload'}"></button>
+            </div>
+
+            <div class="header-right">
+                <button id="searchToggle" class="win-button searchToggle">&#xE721;</button>
+                <div id="search"
+                     data-win-control="WinJS.UI.AutoSuggestBox"
+                     data-win-options="{placeholderText: 'Search', searchButtonVisible: true}">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <iframe id="app-frame" src="home.html"></iframe>
+        </main>
+
+        <div id="mediaBar" class="mediaBar"
+             data-win-control="WinJS.UI.CommandBar"
+             data-win-options="{ closedDisplayMode: 'compact', openedDisplayMode: 'full', sticky: true }">
+
+            <div class="now-playing">
+                <span id="np-title" class="win-type-caption">Not playing</span>
+            </div>
+
+            <button id="cmdPrev"
+                    data-win-control="WinJS.UI.AppBarCommand"
+                    data-win-options="{ icon: 'back', section: 'global', label: 'Previous' }"></button>
+
+            <button id="cmdPlayPause"
+                    data-win-control="WinJS.UI.AppBarCommand"
+                    data-win-options="{ icon: 'play', section: 'global', label: 'Play/Pause' }"></button>
+
+            <button id="cmdNext"
+                    data-win-control="WinJS.UI.AppBarCommand"
+                    data-win-options="{ icon: 'forward', section: 'global', label: 'Next' }"></button>
+        </div>
+
+        <audio id="audioPlayer" msAudioCategory="BackgroundCapableMedia"></audio>
+    </div>
+</body>
+</html>
