@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link id="winjs-theme" href="" rel="stylesheet" />
+    <script src="winjs/base.js"></script>
+    <script src="winjs/ui.js"></script>
+    <link rel="stylesheet" href="css/cardstyles.css" />
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        :root {
+            --accent: #0078d7;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: transparent !important;
+        }
+
+        body {
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 20px 20px 10px 20px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .app-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            padding: 0 16px 12px 16px;
+        }
+
+        /* keep existing layout but fix overflow and ellipsis behavior */
+        #hero-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            display: flex;
+            box-sizing: border-box;
+        }
+
+        /* slides fill container exactly and allow children to shrink */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+            box-sizing: border-box;
+            min-width: 0; /* critical: allow flex children to shrink and enable ellipsis */
+        }
+
+            .hero-slide.active {
+                opacity: 1;
+                z-index: 2;
+            }
+
+        /* keep blurred background inside hero and avoid pushing layout */
+        .hero-bg {
+            position: absolute;
+            inset: 0; /* top:0; right:0; bottom:0; left:0; */
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: #0078d7;
+            filter: blur(50px);
+            transform: scale(1.06); /* hide blurred edges without overflowing */
+            pointer-events: none;
+            box-sizing: border-box;
+        }
+
+        /* content container: allow shrinking and prevent overflow */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 0; /* allow children to shrink inside flex */
+        }
+
+        /* responsive image that won't force horizontal scroll */
+        .hero-img {
+            width: 180px;
+            max-width: 40vw;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+            box-sizing: border-box;
+        }
+
+        /* Title: single-line ellipsis (keeps your font size) */
+        .hero-title {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Description: clamp visually to 3 lines in modern browsers and ensure no overflow */
+        .hero-desc {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            /* modern browsers: clamp to 3 lines */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            /* fallback safety for non-clamp browsers (IE11) */
+            max-height: calc(1.5em * 3); /* 3 lines */
+        }
+
+        /* nav buttons unchanged but ensure they don't cause overflow */
+        .hero-nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.4);
+            font-size: 40px;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+            .hero-nav:hover {
+                background: rgba(255,255,255,0.1);
+                color: var(--accent);
+            }
+
+        .hero-prev {
+            left: 0;
+        }
+
+        .hero-next {
+            right: 0;
+        }
+
+        /* small screens: allow title to wrap to two lines with ellipsis */
+        @media (max-width: 520px) {
+            .hero-title {
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-height: calc(1.05em * 2);
+            }
+
+            .hero-desc {
+                -webkit-line-clamp: 2;
+                max-height: calc(1.5em * 2);
+            }
+
+            #hero-container {
+                height: auto;
+                padding: 28px 0;
+            }
+        }
+
+
+        @media (max-width: 800px) {
+            .hero-bg {
+                filter: unset;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .hero-img {
+                display: none;
+            }
+
+            #hero-container {
+                height: 250px;
+            }
+
+            .hero-title {
+                font-size: 48px;
+                font-weight: 500;
+
+            }
+
+            .hero-desc {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body class="win-type-body">
+    <script src="js/dataFILE.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
