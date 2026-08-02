@@ -1,0 +1,291 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preload" as="image" href="Assets\SplashScreen.png">
+    <title>10Store</title>
+    <link id="winjs-theme" href="" rel="stylesheet" />
+    <script src="lib/winjs-4.0.1/js/base.js"></script>
+    <script src="lib/winjs-4.0.1/js/ui.js"></script>
+    <link href="css/default.css" rel="stylesheet" />
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        img {
+            pointer-events: none;
+        }
+
+        :root {
+            --accent: #0078d7;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #root-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        header#app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+            padding: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #page-title {
+            display: block;
+            margin-left: 12px;
+            margin-right: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .navbtn {
+            background: transparent !important;
+            border: none !important;
+            font-size: 14px;
+            height: 48px;
+            padding: 0 12px !important;
+            min-width: 0 !important;
+        }
+
+            .navbtn:hover .win-label {
+                color: var(--accent) !important;
+                color: #0078d7
+            }
+
+            .navbtn:active .win-label {
+                color: var(--accent) !important;
+                color: #0078d7
+            }
+
+
+        .icon-btn {
+            background: transparent !important;
+            min-width: 0 !important;
+            min-height: 0 !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: none;
+            border-color: transparent !important;
+        }
+
+            .icon-btn:hover {
+                background: rgba(255, 255, 255, 0.2) !important;
+            }
+
+        .searchToggle {
+            background: transparent !important;
+            min-width: 0 !important;
+            min-height: 0 !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: none;
+            border-color: transparent !important;
+        }
+
+            .searchToggle:hover {
+                background: rgba(255, 255, 255, 0.2) !important;
+            }
+
+        #search {
+            width: 100%;
+            max-width: 220px;
+            min-width: 0 !important;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        x-ms-webview {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background-color: transparent;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        #extended-splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--accent) !important;
+            background-color: #0078d7;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+        }
+
+        #extended-splash img {
+            width: 620px;
+            height: 300px;
+        }
+
+        #splash-bottom-container {
+            position: absolute;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #loading-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+
+        @media (max-width: 800px) {
+            .icon-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .searchToggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                .searchToggle.hide {
+                    display: none !important;
+                }
+
+            .navbtn {
+                display: none;
+            }
+
+            #body-bg {
+                display: none;
+            }
+
+            header#app-header {
+                padding: unset;
+            }
+
+                header#app-header.search-open {
+                    padding: 0 12px 0 0 !important;
+                }
+
+            #search {
+                display: none;
+            }
+
+                #search.show {
+                    display: block !important;
+                }
+        }
+
+        @media (max-width: 350px) {
+            #page-title {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="win-type-body">
+    <div id="extended-splash">
+        <img id="splash-logo" src="Assets\SplashScreen.png" fetchpriority="high" />
+
+        <div id="splash-bottom-container">
+            <progress class="win-ring win-large" style="color: white; padding-bottom: 20px;"></progress>
+            <div id="splash-text" class="win-type-subtitle" style="color: white; opacity: 0; transition: opacity 0.5s ease-in-out;">Loading</div>
+        </div>
+    </div>
+
+    <div id="root-container">
+        <header id="app-header">
+            <div class="header-left">
+                <button class="win-button icon-btn">&#xE700;</button>
+
+                <span id="page-title" class="win-type-title" data-win-res="{textContent: 'app-title-text1'}"></span>
+
+                <nav id="nav-links">
+                    <button id="btn-home" class="win-button navbtn">
+                        <span class="win-label" data-win-res="{textContent: 'home-btn-text1'}"></span>
+                    </button>
+
+                    <button id="btn-apps" class="win-button navbtn">
+                        <span class="win-label" data-win-res="{textContent: 'allapps-btn-text1'}"></span>
+                    </button>
+
+                    <button id="btn-cache" class="win-button navbtn">
+                        <span class="win-label" data-win-res="{textContent: 'cache-btn-text1'}"></span>
+                    </button>
+
+                    <button id="btn-upload" class="win-button navbtn">
+                        <span class="win-label" data-win-res="{textContent: 'upload-btn-text1'}"></span>
+                    </button>
+                </nav>
+            </div>
+
+            <div id="nav-menu" data-win-control="WinJS.UI.Menu">
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-res="{winControl: {'label': 'home-btn-text1'}}" data-win-options="{id:'menu-home', label:'', icon:'home'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-res="{winControl: {'label': 'allapps-btn-text1'}}" data-win-options="{id:'menu-apps', label:'', icon:'allapps'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-res="{winControl: {'label': 'cache-btn-text1'}}" data-win-options="{id:'menu-cache', label:'', icon:'download'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-res="{winControl: {'label': 'upload-btn-text1'}}" data-win-options="{id:'menu-upload', label:'', icon:'upload'}"></button>
+            </div>
+
+            <div class="header-right">
+                <button id="searchToggle" class="win-button searchToggle">&#xE721;</button>
+                <div id="search"
+                     data-win-control="WinJS.UI.SearchBox"
+                     data-win-res="{winControl: {'placeholderText': 'search-placeholder-text1'}}"
+                     data-win-options="{placeholderText: ''}">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <progress class="win-ring win-large" id="loading-ring"></progress>
+            <div id="webview-wrapper" style="z-index: 2; overflow: hidden; transition: opacity 0.1s ease; width: 100%; height: 100%; opacity: 0;">
+                <x-ms-webview id="app-frame"></x-ms-webview>
+            </div>
+        </main>
+    </div>
+
+    <audio src="assets/dYTpIntro.mp3" autoplay></audio>
+</body>
+</html>

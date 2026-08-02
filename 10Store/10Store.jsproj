@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>1d03ae9b-7b75-4477-acb7-7973282931fd</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '15.0'">
+    <VisualStudioVersion>15.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
+  <PropertyGroup>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <PackageCertificateKeyFile>10Store_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>5443A380DCC4464365AFC8789653BB76FB96A780</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="10Store_TemporaryKey.pfx" />
+    <Content Include="app.html" />
+    <Content Include="assets\allset.wav" />
+    <Content Include="assets\BadgeLogo.scale-100.png" />
+    <Content Include="assets\BadgeLogo.scale-125.png" />
+    <Content Include="assets\BadgeLogo.scale-150.png" />
+    <Content Include="assets\BadgeLogo.scale-200.png" />
+    <Content Include="assets\BadgeLogo.scale-400.png" />
+    <Content Include="assets\dYTpIntro.mp3" />
+    <Content Include="assets\gradient.gif" />
+    <Content Include="assets\info.wav" />
+    <Content Include="assets\LargeTile.scale-100.png" />
+    <Content Include="assets\LargeTile.scale-125.png" />
+    <Content Include="assets\LargeTile.scale-150.png" />
+    <Content Include="assets\LargeTile.scale-200.png" />
+    <Content Include="assets\LargeTile.scale-400.png" />
+    <Content Include="assets\Logo.scale-100.png" />
+    <Content Include="assets\Logo.scale-125.png" />
+    <Content Include="assets\Logo.scale-150.png" />
+    <Content Include="assets\Logo.scale-200.png" />
+    <Content Include="assets\Logo.scale-400.png" />
+    <Content Include="assets\SmallTile.scale-100.png" />
+    <Content Include="assets\SmallTile.scale-125.png" />
+    <Content Include="assets\SmallTile.scale-150.png" />
+    <Content Include="assets\SmallTile.scale-200.png" />
+    <Content Include="assets\SmallTile.scale-400.png" />
+    <Content Include="assets\SplashScreen.scale-100.png" />
+    <Content Include="assets\SplashScreen.scale-125.png" />
+    <Content Include="assets\SplashScreen.scale-150.png" />
+    <Content Include="assets\SplashScreen.scale-200.png" />
+    <Content Include="assets\SplashScreen.scale-400.png" />
+    <Content Include="assets\Square150x150Logo.scale-100.png" />
+    <Content Include="assets\Square150x150Logo.scale-125.png" />
+    <Content Include="assets\Square150x150Logo.scale-150.png" />
+    <Content Include="assets\Square150x150Logo.scale-200.png" />
+    <Content Include="assets\Square150x150Logo.scale-400.png" />
+    <Content Include="assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="assets\Square44x44Logo.scale-100.png" />
+    <Content Include="assets\Square44x44Logo.scale-125.png" />
+    <Content Include="assets\Square44x44Logo.scale-150.png" />
+    <Content Include="assets\Square44x44Logo.scale-200.png" />
+    <Content Include="assets\Square44x44Logo.scale-400.png" />
+    <Content Include="assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="assets\StoreAppList.altform-unplated_targetsize-16.png" />
+    <Content Include="assets\StoreAppList.altform-unplated_targetsize-24.png" />
+    <Content Include="assets\StoreAppList.altform-unplated_targetsize-256.png" />
+    <Content Include="assets\StoreAppList.altform-unplated_targetsize-32.png" />
+    <Content Include="assets\StoreAppList.altform-unplated_targetsize-48.png" />
+    <Content Include="assets\StoreAppList.scale-100.png" />
+    <Content Include="assets\StoreAppList.scale-125.png" />
+    <Content Include="assets\StoreAppList.scale-150.png" />
+    <Content Include="assets\StoreAppList.scale-200.png" />
+    <Content Include="assets\StoreAppList.scale-400.png" />
+    <Content Include="assets\StoreAppList.targetsize-16.png" />
+    <Content Include="assets\StoreAppList.targetsize-24.png" />
+    <Content Include="assets\StoreAppList.targetsize-256.png" />
+    <Content Include="assets\StoreAppList.targetsize-32.png" />
+    <Content Include="assets\StoreAppList.targetsize-48.png" />
+    <Content Include="assets\StoreLargeTile.scale-100.png" />
+    <Content Include="assets\StoreLargeTile.scale-125.png" />
+    <Content Include="assets\StoreLargeTile.scale-150.png" />
+    <Content Include="assets\StoreLargeTile.scale-200.png" />
+    <Content Include="assets\StoreLargeTile.scale-400.png" />
+    <Content Include="assets\storelogo.scale-100.png" />
+    <Content Include="assets\storelogo.scale-125.png" />
+    <Content Include="assets\storelogo.scale-150.png" />
+    <Content Include="assets\storelogo.scale-200.png" />
+    <Content Include="assets\storelogo.scale-400.png" />
+    <Content Include="assets\StoreMedTile.scale-100.png" />
+    <Content Include="assets\StoreMedTile.scale-125.png" />
+    <Content Include="assets\StoreMedTile.scale-150.png" />
+    <Content Include="assets\StoreMedTile.scale-200.png" />
+    <Content Include="assets\StoreMedTile.scale-400.png" />
+    <Content Include="assets\StoreSmallTile.scale-100.png" />
+    <Content Include="assets\StoreSmallTile.scale-125.png" />
+    <Content Include="assets\StoreSmallTile.scale-150.png" />
+    <Content Include="assets\StoreSmallTile.scale-200.png" />
+    <Content Include="assets\StoreSmallTile.scale-400.png" />
+    <Content Include="assets\StoreWideTile.scale-100.png" />
+    <Content Include="assets\StoreWideTile.scale-125.png" />
+    <Content Include="assets\StoreWideTile.scale-150.png" />
+    <Content Include="assets\StoreWideTile.scale-200.png" />
+    <Content Include="assets\StoreWideTile.scale-400.png" />
+    <Content Include="assets\welcome.wav" />
+    <Content Include="assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="cache.html" />
+    <Content Include="css\cardstyles.css" />
+    <Content Include="index.html" />
+    <Content Include="js\app.js" />
+    <Content Include="js\cache.js" />
+    <Content Include="js\config.js" />
+    <Content Include="js\main.js" />
+    <Content Include="css\default.css" />
+    <Content Include="lib\winjs-4.0.1\js\base.js" />
+    <Content Include="lib\winjs-4.0.1\js\ui.js" />
+    <Content Include="lib\winjs-4.0.1\css\ui-light.css" />
+    <Content Include="lib\winjs-4.0.1\css\ui-dark.css" />
+    <Content Include="lib\winjs-4.0.1\fonts\Symbols.ttf" />
+    <Content Include="msapp-error.css" />
+    <Content Include="msapp-error.html" />
+    <Content Include="msapp-error.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="strings\en-GB\resources.resjson" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <!-- To modify your build process, add your task inside one of the targets below then uncomment
+       that target and the DisableFastUpToDateCheck PropertyGroup. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  -->
+</Project>
