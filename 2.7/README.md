@@ -1,0 +1,1 @@
+2.7.0.0, basically the same as 2.8 except no resourses.resjson and it uses a local app.html instead of a remote one.

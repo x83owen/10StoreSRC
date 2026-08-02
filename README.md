@@ -1,1 +1,1 @@
-the final build of 10Store that was released to the public!
+hello! this github repo will contain every build of 10Store's source code!

@@ -1,0 +1,25 @@
+﻿.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.center-box {
+    text-align: center;
+}
+
+.headline {
+    margin: 0 0 6px 0;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.subtext {
+    margin: 0 0 20px 0;
+    line-height: 1.35;
+}
+
+#checkBtn {
+    background: var(--accent);
+}
