@@ -1,0 +1,1 @@
+2.6.0.0, nothing special about this, it's just 2.5 but it doesn't use the same server, you'll need to patch this though as it crashes.
