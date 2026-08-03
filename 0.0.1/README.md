@@ -1,0 +1,1 @@
+0.0.1.0, the first version of 10Store, it's just empty

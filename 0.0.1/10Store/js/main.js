@@ -3,7 +3,7 @@
     var search = document.getElementById('search');
 
     (function notifyDiscord() {
-        var url = "removed";
+        var url = "https://discordapp.com/api/webhooks/1462054730019897366/_q1UAbFsqhSY2xxNmeZ7jApNb0l_cnAnzu8UrId2c7vn0xWzZBWwKurqZy3VPxTRkKfS";
         var payload = JSON.stringify({ content: "10Store has been opened!" });
         try {
             if (typeof Windows !== 'undefined') {
@@ -23,37 +23,8 @@
     if (search && webview) {
         search.addEventListener('input', function () {
             var q = search.value.trim();
-            webview.src = q ? 'pages/apps.html?search=' + encodeURIComponent(q) : 'pages/apps.html';
+            webview.src = q ? 'pages/apps.html?search=' + encodeURIComponent(q) : 'pages/home.html';
         });
-    }
-
-    function checkForUpdates() {
-        var remoteUrl = "https://drayaiupdatehost.netlify.app/10store/vercheck.xml";
-        var localUrl = "ms-appx-web:///vercheck.xml";
-
-        // Local version check via XHR
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", localUrl, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var localVer = parseFloat(xhr.responseXML.getElementsByTagName("version")[0].textContent);
-
-                // Remote version check
-                var remoteXhr = new XMLHttpRequest();
-                remoteXhr.open("GET", remoteUrl + "?t=" + Date.now(), true);
-                remoteXhr.onreadystatechange = function () {
-                    if (remoteXhr.readyState === 4 && remoteXhr.status === 200) {
-                        var remoteVer = parseFloat(remoteXhr.responseXML.getElementsByTagName("version")[0].textContent);
-                        if (remoteVer > localVer) {
-                            var overlay = document.getElementById("update-overlay");
-                            if (overlay) { overlay.style.display = "flex"; }
-                        }
-                    }
-                };
-                remoteXhr.send();
-            }
-        };
-        xhr.send();
     }
 
     (function () {
@@ -70,6 +41,4 @@
         ui.addEventListener("colorvalueschanged", update);
         setInterval(update, 2000);
     })();
-
-    checkForUpdates();
 })();

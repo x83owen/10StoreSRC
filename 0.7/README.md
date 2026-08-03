@@ -1,0 +1,1 @@
+0.7.0.0, first version to have a actual app catalog! also uses local files instead of remote ones

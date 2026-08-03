@@ -27,35 +27,6 @@
         });
     }
 
-    function checkForUpdates() {
-        var remoteUrl = "https://drayaiupdatehost.netlify.app/10store/vercheck.xml";
-        var localUrl = "ms-appx-web:///vercheck.xml";
-
-        // Local version check via XHR
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", localUrl, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var localVer = parseFloat(xhr.responseXML.getElementsByTagName("version")[0].textContent);
-
-                // Remote version check
-                var remoteXhr = new XMLHttpRequest();
-                remoteXhr.open("GET", remoteUrl + "?t=" + Date.now(), true);
-                remoteXhr.onreadystatechange = function () {
-                    if (remoteXhr.readyState === 4 && remoteXhr.status === 200) {
-                        var remoteVer = parseFloat(remoteXhr.responseXML.getElementsByTagName("version")[0].textContent);
-                        if (remoteVer > localVer) {
-                            var overlay = document.getElementById("update-overlay");
-                            if (overlay) { overlay.style.display = "flex"; }
-                        }
-                    }
-                };
-                remoteXhr.send();
-            }
-        };
-        xhr.send();
-    }
-
     (function () {
         if (typeof Windows === 'undefined') return;
         var ui = new Windows.UI.ViewManagement.UISettings();
@@ -70,6 +41,4 @@
         ui.addEventListener("colorvalueschanged", update);
         setInterval(update, 2000);
     })();
-
-    checkForUpdates();
 })();

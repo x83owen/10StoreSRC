@@ -1,1 +1,1 @@
-1.0.0.0, first version to have vercheck.xml
+1.0.0.0, first version to have vercheck.xml, and the first version to have a remote app catalog, and the first version with a icon!

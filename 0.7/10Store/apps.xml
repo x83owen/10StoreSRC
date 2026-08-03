@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <categories>
+    <category title="Featured" type="featured" />
+  </categories>
+
+  <apps>
+    <app id="1">
+      <name>pc app</name>
+      <icon>https://cdn-icons-png.flaticon.com/512/733/733585.png</icon>
+      <publisher>DraydenYT</publisher>
+      <featured>true</featured>
+      <description>If you see this, you are on a pc!</description>
+      <package>https://dl.dankassassin368.com/App3_2.0.0.0_AnyCPU.appx</package>
+      <pcCapable>true</pcCapable>
+      <mobileCapable>false</mobileCapable>
+    </app>
+    <app id="2">
+      <name>mobile app</name>
+      <icon>https://cdn-icons-png.flaticon.com/512/733/733585.png</icon>
+      <publisher>DraydenYT</publisher>
+      <featured>true</featured>
+      <description>If you see this, you are on a mobile!</description>
+      <package>https://dl.dankassassin368.com/App3_2.0.0.0_AnyCPU.appx</package>
+      <pcCapable>false</pcCapable>
+      <mobileCapable>true</mobileCapable>
+    </app>
+  </apps>
+</data>
