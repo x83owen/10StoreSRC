@@ -1,0 +1,186 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>10Store</title>
+    <link id="winjs-theme" href="" rel="stylesheet" />
+    <script src="winjs/base.js"></script>
+    <script src="winjs/ui.js"></script>
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        :root {
+            --accent: #0078d7;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Removes the default WinJS focus ring because we want a cleaner look */
+        .win-button:focus::after,
+        .icon-btn:focus::after {
+            content: none !important;
+        }
+
+        #root-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Header Layout */
+        header#app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+            padding: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #page-title {
+            display: block;
+            margin-left: 12px;
+            margin-right: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Navigation Buttons styled as Win-Buttons */
+        .navbtn {
+            background: transparent !important;
+            border: none !important;
+            font-size: 14px;
+            height: 48px;
+            padding: 0 12px !important;
+            min-width: 0 !important;
+        }
+
+            .navbtn:hover .win-label {
+                color: var(--accent) !important;
+            }
+
+        /* Hamburger / Icon Buttons */
+        .icon-btn {
+            background: transparent !important;
+            min-width: 0 !important;
+            min-height: 0 !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: none;
+        }
+
+        #search {
+            width: 100%;
+            max-width: 220px;
+            min-width: 0 !important;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background-color: transparent;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .icon-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .navbtn {
+                display: none;
+            }
+
+            header#app-header {
+                padding: 0 12px 0 0;
+            }
+        }
+    </style>
+</head>
+<body class="win-type-body">
+
+    <div id="root-container">
+        <header id="app-header">
+            <div class="header-left">
+                <button class="win-button icon-btn">&#xE700;</button>
+
+                <span id="page-title" class="win-type-title">10Store</span>
+
+                <nav id="nav-links">
+                    <button id="btn-home" class="win-button navbtn">
+                        <span class="win-label">Home</span>
+                    </button>
+
+                    <button id="btn-apps" class="win-button navbtn">
+                        <span class="win-label">Apps</span>
+                    </button>
+
+                    <button id="btn-cache" class="win-button navbtn">
+                        <span class="win-label">Downloads</span>
+                    </button>
+
+                    <button id="btn-feedback" class="win-button navbtn">
+                        <span class="win-label">Feedback</span>
+                    </button>
+
+                    <button id="btn-upload" class="win-button navbtn">
+                        <span class="win-label">Upload</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div id="nav-menu" data-win-control="WinJS.UI.Menu">
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-home', label:'Home', icon:'home'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-apps', label:'Apps', icon:'allapps'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-cache', label:'Downloads', icon:'download'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-feedback', label:'Feedback', icon:'feedback'}"></button>
+                <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'menu-upload', label:'Upload', icon:'upload'}"></button>
+            </div>
+
+            <div class="header-right">
+                <div id="search"
+                     data-win-control="WinJS.UI.AutoSuggestBox"
+                     data-win-options="{placeholderText: 'Search', searchButtonVisible: true}">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <iframe id="app-frame" src="home.html"></iframe>
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
