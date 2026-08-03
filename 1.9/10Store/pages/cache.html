@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: transparent;
+            color: #000000;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-bar {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #scroll-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .file-card {
+            display: flex;
+            align-items: center;
+            padding: 15px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background 0.1s;
+            -webkit-user-select: none;
+            user-select: none;
+            width: 100%;
+        }
+
+            .file-card:hover {
+                background: #f0f0f0;
+            }
+
+        .file-info {
+            flex: 1;
+            min-width: 0;
+            padding-right: 10px;
+        }
+
+        .file-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #0078D7;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .file-meta {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        .btn-delete {
+            background: #e81123;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 12px;
+            flex-shrink: 0;
+            height: 100%;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            .header-bar {
+                padding: 15px;
+            }
+
+            #scroll-container {
+                padding: 15px;
+                padding-top: 0;
+            }
+
+            .page-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="page-title">Downloads</div>
+    </div>
+
+    <div id="scroll-container">
+        <div id="file-list" class="file-list">
+            <p style="padding:10px; color:#666;">Checking...</p>
+        </div>
+    </div>
+
+    <script src="../js/cache.js"></script>
+</body>
+</html>

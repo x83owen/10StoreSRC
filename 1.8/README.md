@@ -1,0 +1,1 @@
+1.8.0.0, yeah idk what the original release notes were for this one.

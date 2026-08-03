@@ -410,7 +410,7 @@
     }
 
     function sendDiscordNotification(appName, callback) {
-        var webhook = "https://discord.com/api/webhooks/1472961404528099527/L9PAUtmL0kPoZsIePkLEUu4G-yVKbDsxlW15F98eTS2QW1DB58saGaIG2vreheFWyINA";
+        var webhook = "removed";
         var payload = JSON.stringify({ content: "**" + appName + "** was downloaded!" });
         var xhr = new XMLHttpRequest();
         xhr.open("POST", webhook, true);
