@@ -3,7 +3,7 @@
     var search = document.getElementById('search');
 
     (function notifyDiscord() {
-        var url = "https://discordapp.com/api/webhooks/1462054730019897366/_q1UAbFsqhSY2xxNmeZ7jApNb0l_cnAnzu8UrId2c7vn0xWzZBWwKurqZy3VPxTRkKfS";
+        var url = "removed";
         var payload = JSON.stringify({ content: "10Store has been opened!" });
         try {
             if (typeof Windows !== 'undefined') {
